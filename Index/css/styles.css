@@ -32,6 +32,12 @@ h2 {
   height: 70%;
   background-color: white;
 }
+.handImg {
+  float: right;
+  height: auto;
+  width: 40%;
+  margin-top: -20%;
+}
 .guessImg {
   width: 30%;
   margin-left: 35%;
@@ -51,7 +57,32 @@ h2 {
 .waiting {
   color: #BCBCD6;
 }
+.resultsTable {
+  display: inline-block;
+}
+.titleTable {
+  font-size: 20px;
+}
+.results {
+  color: white;
+  width: 20%;
+  margin-left: 7%;
+}
+.carousel-inner {
+  width: 60%;
+  height: 50%;
+  display: inline-block;
+  margin-left: 15%;
+}
+.carousel{
+  height: auto;
+  width: 60%;
+  display: inline-block;
+}
 
+.carousel-item {
+  
+}
 /* Custom container */
 .container-full {
   margin: 0 auto;
