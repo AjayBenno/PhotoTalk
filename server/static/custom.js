@@ -1,5 +1,3 @@
-
-
 var canvas = new fabric.Canvas('c1');
 canvas.isDrawingMode = true;
 canvas.freeDrawingBrush.width = 5;
