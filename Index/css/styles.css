@@ -6,8 +6,8 @@ html,body {
 
 
 h1 {
+  font-size: 70px;
   font-family: Arial,sans-serif;
-  font-size: 100px;
   color:#DDCCEE;
 }
 h2 {
@@ -31,6 +31,16 @@ h2 {
   margin-left: 1%;
   height: 70%;
   background-color: white;
+}
+.guessImg {
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+.responsive-img {
+  width: 100%;
+  height: auto;
 }
 .word {
   color: #BCBCD6;
