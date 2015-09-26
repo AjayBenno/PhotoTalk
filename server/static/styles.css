@@ -36,7 +36,7 @@ h2 {
    width: 600px ;
    height: 600px;
   display: inline-block;
-  margin-left: 30%;
+  margin-left: 35%;
 }
 .qmark {
   width: 20%;
@@ -68,8 +68,9 @@ h2 {
 .ear {
   width: 20%;
   float: left;
-  margin-bottom:1400px;
+  /*margin-bottom:1400px;*/
   display: inline-block;
+  margin-top: -30%
 }
 .ear img {
   width: 100%;
