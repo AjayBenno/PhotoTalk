@@ -21,7 +21,6 @@ mygame = Game(gameID)
 print mygame.gameID
 app=Flask(__name__)
 
-
 @app.route("/")
 def main():
 	return ""
@@ -34,7 +33,7 @@ def addPlayer(user):
 @app.route("/game/join/<gID>")
 def join(gID):
 	if(str(gID)==str(mygame.gameID)):
-		return render_template('index.html',gID=str(gID))
+		return "good" #render template for guess?
 	else:
 		return "bad"
 
