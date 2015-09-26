@@ -1,13 +1,14 @@
 html,body {
   height:100%;
-  font-family: Arial,sans-serif;
+  font-family: 'PT Sans Narrow', sans-serif;
   /*color: white;*/
+  background-color: #110022;
 }
 
 
 h1 {
   font-size: 70px;
-  font-family: Arial,sans-serif;
+  font-family: 'PT Sans Narrow', sans-serif;
   color:#DDCCEE;
 }
 h2 {
@@ -19,15 +20,49 @@ h2 {
 }
 .canvas {
   background-color: white;
-  width: 70%;
-  height: 70%;
-  margin-top: 2%;
-  margin-left: 5%;
+   width: 700px ;
+   height: 700px;
+  margin-left: 8% ;
   display: inline-block;
+}
+.qmark {
+  width: 20%;
+  display: inline-block;
+}
+.qmark2 {
+  width: 10%;
+  display: inline-block;
+}
+.qmark3 {
+  width: 30%;
+  display: inline-block;
+}
+.qmark img {
+  width: 100%;
+  margin-top: -900px;
+  margin-left: 60px;
+}
+.qmark2 img {
+  width: 100%;
+  margin-top: -600px;
+  margin-left: 30px;
+}
+.qmark3 img {
+  width: 100%;
+  margin-top: -700px;
+  margin-left: 600px;
+}
+.ear {
+  width: 20%;
+  float: left;
+  margin-top: 10%;
+  display: inline-block;
+}
+.ear img {
+  width: 100%;
 }
 .gameInfo {
   width: 20%;
-  display: inline-block;
   margin-left: 1%;
   height: 70%;
   background-color: white;
@@ -59,6 +94,8 @@ h2 {
 }
 .resultsTable {
   display: inline-block;
+  margin-bottom: 10%;
+  margin-left: 5%;
 }
 .titleTable {
   font-size: 20px;
@@ -78,10 +115,17 @@ h2 {
   height: auto;
   width: 60%;
   display: inline-block;
+  margin-left: 10%;
 }
 
 .carousel-item {
-  
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.item {
+  width: auto;
+  height: 100%;
 }
 /* Custom container */
 .container-full {
