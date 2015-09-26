@@ -6,8 +6,8 @@ html,body {
 
 
 h1 {
+  font-size: 70px;
   font-family: Arial,sans-serif;
-  font-size: 100px;
   color:#DDCCEE;
 }
 h2 {
@@ -15,7 +15,6 @@ h2 {
 }
 
 .lead {
-  font-size: 90px;
 	color:#DDCCEE;
 }
 .canvas {
@@ -41,7 +40,6 @@ h2 {
 
 .waiting {
   color: #BCBCD6;
-  font-size: 70px;
 }
 
 /* Custom container */
