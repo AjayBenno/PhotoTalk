@@ -18,12 +18,25 @@ h2 {
 .lead {
 	color:#DDCCEE;
 }
+
+#myImg{
+  background-color: white;
+}
+.guessImg {
+  background-color: white;
+  width: 600px;
+  height: 600px;
+}
+.buttonsContainer {
+  display: block;
+  margin-left: 45%;
+}
 .canvas {
   background-color: white;
    width: 600px ;
    height: 600px;
-  margin-left: 11% ;
   display: inline-block;
+  margin-left: 30%;
 }
 .qmark {
   width: 20%;
@@ -55,7 +68,7 @@ h2 {
 .ear {
   width: 20%;
   float: left;
-  margin-top: 10%;
+  margin-bottom:1400px;
   display: inline-block;
 }
 .ear img {

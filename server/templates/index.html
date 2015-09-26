@@ -6,14 +6,46 @@
 		<title>Photo Talk</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="../../static/styles.css" rel="stylesheet">
 	</head>
 	<body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">P.Talk</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://jason.ma">Jason Ma <span class="sr-only">(current)</span></a></li>
+        <li><a href="http://ajaybenno.com"/>Ajay Benno</a></li>
+       
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Contact Us!</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 <div class="container-full">
 
       <div class="row">
@@ -21,20 +53,21 @@
         <div class="col-lg-12 text-center v-center">
           
           <h1>Photo Talk</h1>
-          <p class="lead" id="ld">Insert cool slogan here</p>
+          <p class="lead">Insert cool slogan here</p>
           
           <br><br><br>
           
           <form class="col-lg-12">
             <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
             <input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter username" type="text">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" onclick="getLink()">Create Game</button></span>
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" onclick="ClickMe()">Create Game</button></span>
             </div>
           </form>
         </div>
         
       </div> <!-- /row -->
-  
+      
+      <div class = "handImg"> <img class = "responsive-img" src="../../static/hand.png"> </div>
   	  <div class="row">
        
         <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
@@ -80,6 +113,11 @@
           </div>
         </div>
     </div>
+    <script>
+    function ClickMe(){
+    window.location.href="http://localhost:5000/game/join/{{gID}}";
+  }
+  </script>
   
 	<div class="row">
         <div class="col-lg-12">
@@ -89,14 +127,10 @@
         </div>
     </div>
 </div>
-<script>
-function getLink(){
-window.open("localhost:5000/game/join/{{gID}}"); //have trigger modal if time to have people go to website.
-}
 
-</script>
+
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</body>
 </html>

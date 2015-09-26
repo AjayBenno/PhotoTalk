@@ -10,15 +10,39 @@ import random
 gameBoard=[]
 playerBoard=[0,1,2,3]
 readyNum=0
+
+
 class Game:
 	gameRound=1
 	players=-1
 	def __init__(self,gameID):
 		self.gameID=gameID
+
 def getHugeAssList():
-	histList = [[gameBoard[0]],gameBoard[1],gameBoard[2],gameBoard[3]]
-	tList= [gameBoard,playerBoard,histList,mygame.gameround,['','','','']]
-	return tlist
+	histList = [[gameBoard[0]],[gameBoard[1]],[gameBoard[2]],[gameBoard[3]]]
+	tList= [gameBoard,playerBoard,histList,mygame.gameRound,['','','','']]
+	return tList
+
+
+def rotate(listOfPlayers):
+	result = [listOfPlayers[-1]] + listOfPlayers[:-1] 
+	return result
+
+
+def nextStep(flaskInput):
+	gameRoom = flaskInput[0]
+	playerBoard = flaskInput[1]
+	inputtedAnswers = flaskInput[2]
+	turn = flaskInput[3] + 1
+	mygame.gameRound = turn
+	inputAnswers = flaskInput[4]
+	if turn == 1:
+		return [gameRoom,playerBoard, inputtedAnswers, turn, inputAnswers]
+	playerBoard = rotate(playerBoard)
+	for index in range(4):
+		inputtedAnswers[index] += [inputAnswers[index]]
+	return [gameRoom,playerBoard, inputtedAnswers, turn, inputAnswers]
+
 
 def generateRandom():
 	listNouns = []
@@ -39,6 +63,7 @@ def createGameBoard():
 gameBoard = createGameBoard();
 gameID = generateID()
 mygame = Game(gameID)
+bigList=getHugeAssList()
 #print mygame.gameID
 app=Flask(__name__, static_url_path='/static')
 
@@ -56,11 +81,15 @@ def getNumPlayers():
 
 @app.route('/game/userID', methods = ['POST'])
 def userID():
+	global playerBoard
 	jsonString = request.form['wordlist']
 	jsonOBJ= json.loads(jsonString)
 	tempID= jsonOBJ['id']
 	associatedPhoto=jsonOBJ['b64']
-	d_game[tempID]=associatedPhoto
+	bigList[4][int(tempID)] =associatedPhoto
+	tempList = nextStep(bigList)
+	playerBoard = tempList[1]
+	inputAnswers = tempList[4]
 
 	# if()
 	return ""
@@ -68,20 +97,28 @@ def userID():
 def ready():
 	jsonString=request.form['wordlist']
 	jsonOBJ=json.loads(jsonString)
-	readyNum+=int(jsonOBJ['id'])
+	temp=readyNum
+	temp+= int(jsonOBJ['id'])
 	if(readyNum == 6):
 		return "True"
+	else:
+		return ""
 @app.route('/game/noun',methods=['POST'])
 def noun():
 	jsonString=request.form['wordlist']
 	jsonOBJ=json.loads(jsonString)
 	t_id = jsonOBJ['id']
-	return gameBoard[int(t_id)]
+	print (int(t_id))
+	return gameBoard[int(t_id)-1]
 	
 
 @app.route("/game/disp")
 def disp():
 	return str(d_game)
+
+@app.route("/game/guess/<myID>")
+def guess(myID):
+	return render_template('guess.html',globalID=int(myID),photo64=bigList[4][playerBoard[int(myID)]])
 
 @app.route("/game/join/<gID>")
 def join(gID):

@@ -66,31 +66,50 @@
   <div class="canvas"><canvas id="c1" width="600px" height="600px" style="border:1px solid black;"> </canvas></div>
 <!--   <div class = "gameInfo">
   </div> -->
-  <button onclick="updateclock()">SEND NUDES</button>
-  <button onclick="seeOnlinePeople()">wilson NUDES</button>
-  <button onclick="ready()">subrasuresh's NUDES</button>
+  <!-- <button onclick="submitPic()">SEND NUDES</button> -->
+  
       <!-- script references -->
       <script>
+      var intervalstopper;
       function updateclock(){
         var time = new Date();
         time = time.getUTCSeconds();
         var comp = new Date();
         comp.setSeconds(30);
         console.log(time+" "+comp.getSeconds());
-        if(1==1){
+        if(time == comp.getSeconds()){
           var json_obj={
           wordlist:JSON.stringify({
           "id":globalID
         })};
           $.post('/game/noun',json_obj,function(data){
             document.getElementById('wordPlace').innerHTML=data;
+            clearInterval(intervalstopper);
+            intervalstopper=startRound1Clock();
           });
+        }
+      }
+      function startRound1Clock(){
+        roundClock();
+        setInterval(roundClock, 1);
+      }
+      function roundClock(){
+        var time= new Date();
+        time = time.getUTCSeconds();
+        var d = new Date();
+        d.setSeconds(58);
+        console.log(time+", "+ d.getSeconds());
+        if(time == d.getSeconds()){
+          console.log("flag")
+          submitPic();
+          clearInterval(intervalstopper);
+          window.location.href='http://localhost:5000/game/guess/'+globalID;
         }
       }
 
       function startclock() {
           updateclock();
-          setInterval(updateclock, 1 ); 
+          intervalstopper=setInterval(updateclock, 1 ); 
       }
       function submitPic(){
         var canvas = document.getElementById('c1');
@@ -123,6 +142,10 @@
 
       </script>
 	<div class = "ear"><img src = "../../static/ear.png"> </div>
+  <div class = "buttonsContainer">
+  <button onclick="seeOnlinePeople()">wilson NUDES</button>
+  <button onclick="ready()">subrasuresh's NUDES</button>
+  </div>
     <script src="../../static/custom.js"></script>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
