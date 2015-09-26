@@ -4,9 +4,12 @@ import uuid
 import types
 import json
 import base64
+import math
+import random
 
 gameBoard=[]
 playerBoard=[0,1,2,3]
+readyNum=0
 class Game:
 	gameRound=1
 	players=-1
@@ -17,10 +20,22 @@ def getHugeAssList():
 	tList= [gameBoard,playerBoard,histList,mygame.gameround,['','','','']]
 	return tlist
 
+def generateRandom():
+	listNouns = []
+	infile = open('static/nouns.txt', 'r')
+	for line in infile:
+		temp = line.strip()
+		temp = temp[:-1]
+		listNouns.append(temp)
+	randIndex = math.floor(random.random() * len(listNouns))
+	while len(listNouns[randIndex]) == 0 or listNouns[randIndex][0] == "\\" or listNouns[randIndex][0] == "{":
+		randIndex = math.floor(random.random() * len(listNouns))
+	return listNouns[randIndex]
+
 def generateID():
 	return uuid.uuid4()
 def createGameBoard():
-	return list[generateRandom(),generateRandom(),generateRandom(),generateRandom()]
+	return [generateRandom(),generateRandom(),generateRandom(),generateRandom()]
 gameBoard = createGameBoard();
 gameID = generateID()
 mygame = Game(gameID)
@@ -37,7 +52,7 @@ def main():
 # 	return str(base64)
 @app.route('/game/getNumPlayers', methods=['POST'])
 def getNumPlayers():
-	return Game.players
+	return str(Game.players)
 
 @app.route('/game/userID', methods = ['POST'])
 def userID():
@@ -47,8 +62,22 @@ def userID():
 	associatedPhoto=jsonOBJ['b64']
 	d_game[tempID]=associatedPhoto
 
-	if()
+	# if()
 	return ""
+@app.route('/game/ready',methods=['POST'])
+def ready():
+	jsonString=request.form['wordlist']
+	jsonOBJ=json.loads(jsonString)
+	readyNum+=int(jsonOBJ['id'])
+	if(readyNum == 6):
+		return "True"
+@app.route('/game/noun',methods=['POST'])
+def noun():
+	jsonString=request.form['wordlist']
+	jsonOBJ=json.loads(jsonString)
+	t_id = jsonOBJ['id']
+	return gameBoard[int(t_id)]
+	
 
 @app.route("/game/disp")
 def disp():
@@ -59,7 +88,7 @@ def join(gID):
 
 	if(str(gID)==str(mygame.gameID)):
 		Game.players +=1
-		return render_template('round1.html',gID=str(gID),players=Game.players,gameBoard=gameBoard)
+		return render_template('round1_jason.html',gID=str(gID),players=Game.players,gameBoard=gameBoard)
 	else:
 		return "bad"
 

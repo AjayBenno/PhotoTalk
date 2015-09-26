@@ -8,7 +8,7 @@ def rotate(listOfPlayers):
 
 
 #returns a randomly generated noun
-def generateRandom():
+def generateRandomWord():
 	listNouns = []
 	infile = open('nouns.txt', 'r')
 	for line in infile:

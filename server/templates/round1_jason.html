@@ -15,6 +15,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
   <script src="../../static/fabric.js"></script>
   <script src="../../static/filesaver-min.js"></script>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
   <script>
     var globalID= '{{players}}';
@@ -61,11 +62,13 @@
   </div><!-- /.container-fluid -->
 </nav>
   <h1 class = "waiting"> Round 1 </h1>
-  <div class = "word"> <h2>Here's your word, now draw it: {{word}}  </h2></div>
+  <div class = "word"> <h2 id="wordPlace">Here's your word, now draw it: <script>noun</script> </h2></div>
   <div class="canvas"><canvas id="c1" width="600px" height="600px" style="border:1px solid black;"> </canvas></div>
 <!--   <div class = "gameInfo">
   </div> -->
-  <button onclick="submitPic()">SEND NUDES</button>
+  <button onclick="updateclock()">SEND NUDES</button>
+  <button onclick="seeOnlinePeople()">wilson NUDES</button>
+  <button onclick="ready()">subrasuresh's NUDES</button>
       <!-- script references -->
       <script>
       function updateclock(){
@@ -74,8 +77,14 @@
         var comp = new Date();
         comp.setSeconds(30);
         console.log(time+" "+comp.getSeconds());
-        if(time == comp){
-          alert("30");
+        if(1==1){
+          var json_obj={
+          wordlist:JSON.stringify({
+          "id":globalID
+        })};
+          $.post('/game/noun',json_obj,function(data){
+            document.getElementById('wordPlace').innerHTML=data;
+          });
         }
       }
 
@@ -83,7 +92,6 @@
           updateclock();
           setInterval(updateclock, 1 ); 
       }
-      startclock();
       function submitPic(){
         var canvas = document.getElementById('c1');
         var base64Rep = canvas.toDataURL();
@@ -95,9 +103,27 @@
 
         $.post('/game/userID',json_obj);        
       }
-      </script>
-	<div class = "ear"><img src = "static/ear.png"> </div>
+      function seeOnlinePeople(){
+        $.post('/game/getNumPlayers',function(data){
+            alert(data);
+        });
+      }
+      function ready(){
+        var json_obj={
+          wordlist:JSON.stringify({
+          "id":globalID
+        })};
+        $.post('/game/ready',json_obj, function(data){
+          getReadyToStart();
+        });
+      function getReadyToStart(){
+        startclock();
+      }
+      }
 
+      </script>
+	<div class = "ear"><img src = "../../static/ear.png"> </div>
+    <script src="../../static/custom.js"></script>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
