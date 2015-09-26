@@ -32,6 +32,16 @@ h2 {
   height: 70%;
   background-color: white;
 }
+.guessImg {
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
 .word {
   color: #BCBCD6;
   text-align: center;
